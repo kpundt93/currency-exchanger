@@ -5,16 +5,22 @@ import './css/styles.css';
 import CurrencyService from "./js/currency-service";
 
 function buildCurrencyString(response, usd, currency) {
-  for (let i = 0; i < response.conversion_rates; i++) {
-    if (currency === response.conversion_rates.currency) {
-      return `<p>$${usd} USD is equivalent to ${usd * response.conversion_rates.currency} in ${currency}.</p>`;
-    }
-  } return `<p>I'm sorry, we couldn't find an exchange rate for ${currency}.</p>`;
+  console.log(currency);
+  Object.keys(response.conversion_rates).forEach(function(key) {
+    if(key === currency.toUpperCase()) {
+      console.log("currency found");
+      let convertedAmount = response.conversion_rates[key] * usd;
+      console.log(response.conversion_rates[key]);
+      console.log(convertedAmount);
+      return`<p>convertedAmount</p>`;
+      }
+    return `<p>Error!</p>`;
+  });
 }
 
 function displayCurrency(response, usd, currency) {
   let output = buildCurrencyString(response, usd, currency);
-  $('#conversion-result').html(output);
+  $('#conversion-result').text(output);
 }
 
 function displayErrors(error) {
@@ -23,19 +29,15 @@ function displayErrors(error) {
 
 $(document).ready(function(){
   $('#convert').click(function(){
-    let usd = $('#usd-amount').val();
-    let currency = $('#ex-currency').val();
     CurrencyService.getCurrency()
       .then(function(currencyResponse) {
         if (currencyResponse instanceof Error) {
           throw Error(`ExchangeRate-API error: ${currencyResponse.message}`);
         }
-        displayCurrency(currencyResponse);
+        displayCurrency(currencyResponse, $('#usd-amount').val(), $('#currency-code').val().toUpperCase());
       })
       .catch(function(error) {
         displayErrors(error.message);
       });
-    console.log("usd-amount: " + usd);
-    console.log("exchange currency: " + currency);
   });
 });
