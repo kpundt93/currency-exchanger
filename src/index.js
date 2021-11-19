@@ -10,7 +10,12 @@ function buildCurrencyString(response, usd, currency) {
       return `<p>$${usd} USD is equivalent to ${usd * response.conversion_rates[i]} in ${currency}.</p>`;
     }
   }
-  return `<p>I'm sorry, we couldn't find an exchange rate for ${currency}.</p>`
+  return `<p>I'm sorry, we couldn't find an exchange rate for ${currency}.</p>`;
+}
+
+function displayCurrency(response, usd, currency) {
+  let output = buildCurrencyString(response, usd, currency);
+  $('#conversion-result').html(output);
 }
 
 function displayErrors(error) {
