@@ -21,7 +21,7 @@
 * _GitHub_
 
 ## Description
-_The application will allow users to input an amount in USD and select a currency from a dropdown menu to convert it to._
+_The application will allow users to input an amount in USD and then enter the currency code of the currency that they would like to convert to and then get the converted amount._
 
 ## Setup/Installation Requirements
 
