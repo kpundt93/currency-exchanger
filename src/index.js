@@ -8,12 +8,13 @@ function buildCurrencyString(response, usd, currency) {
   console.log(currency);
   Object.keys(response.conversion_rates).forEach(function(key) {
     if(key === currency.toUpperCase()) {
+      console.log(key);
       console.log("currency found");
       let convertedAmount = response.conversion_rates[key] * usd;
       console.log(response.conversion_rates[key]);
       console.log(convertedAmount);
-      return`<p>convertedAmount</p>`;
-      }
+      $('#conversion-result').text(convertedAmount);
+    }
     return `<p>Error!</p>`;
   });
 }
