@@ -4,9 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Currency Exchanger</title>
 </head>
 <body>
-
+  <div class="container">
+    <h1>Currency Exchanger</h1>
+    <h2>Get accurate currency exchanges</h2>
+    <h3>Enter the amount you would like to exchange in USD and then enter the currency code for the currency that you would like to exchange USD into.</h3>
+    <label for="usd-amount">USD amount:</label>
+    <input id="usd-amount" type="number" placeholder="ex: $10">
+    <label for="ex-currency">Currency code:</label>
+    <input id="ex-currency" placeholder="ex: EUR" maxlength="3">
+    <button id="convert" class="btn btn-success">Convert</button>
+  </div>
 </body>
 </html>
