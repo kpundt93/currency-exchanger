@@ -5,12 +5,11 @@ import './css/styles.css';
 import CurrencyService from "./js/currency-service";
 
 function buildCurrencyString(response, usd, currency) {
-  for (let i = 0; i < response.conversion_rates.length; i++) {
-    if (currency === response.conversion_rates[i]) {
-      return `<p>$${usd} USD is equivalent to ${usd * response.conversion_rates[i]} in ${currency}.</p>`;
+  for (let i = 0; i < response.conversion_rates; i++) {
+    if (currency === response.conversion_rates.currency) {
+      return `<p>$${usd} USD is equivalent to ${usd * response.conversion_rates.currency} in ${currency}.</p>`;
     }
-  }
-  return `<p>I'm sorry, we couldn't find an exchange rate for ${currency}.</p>`;
+  } return `<p>I'm sorry, we couldn't find an exchange rate for ${currency}.</p>`;
 }
 
 function displayCurrency(response, usd, currency) {
