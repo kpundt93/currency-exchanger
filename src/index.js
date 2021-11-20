@@ -35,7 +35,8 @@ function reset() {
 }
 
 $(document).ready(function(){
-  $('#convert').click(function(){
+  $('#convert').click(function(event){
+    event.preventDefault();
     reset();
     let usd = $('#usd-amount').val();
     let currency = $('#currency-code').val().toUpperCase();
