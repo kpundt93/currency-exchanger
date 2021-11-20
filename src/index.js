@@ -29,8 +29,14 @@ function displayErrors(error) {
   $('#show-errors').text(`${error}`);
 }
 
+function reset() {
+  $('#conversion-result').text("");
+  $('#show-errors').text("");
+}
+
 $(document).ready(function(){
   $('#convert').click(function(){
+    reset();
     let usd = $('#usd-amount').val();
     let currency = $('#currency-code').val().toUpperCase();
     CurrencyService.getCurrency()
